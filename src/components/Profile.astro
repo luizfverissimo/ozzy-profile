@@ -1,0 +1,60 @@
+---
+import * as config from "../config/config.md";
+import { Icon } from "astro-icon/components";
+---
+
+<main
+  class="w-full min-h-screen flex flex-col items-center justify-center gap-6 p-6"
+>
+  <div class="avatar">
+    <div class="w-56 rounded">
+      <img src="profilezoom.jpg" alt="Animal de estimação" />
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center gap-3">
+    <h1 class="font-bold text-6xl">{config.frontmatter.name}</h1>
+    <p class="badge badge-primary badge-lg badge-outline">
+      {config.frontmatter.speciesEmoji}
+      {config.frontmatter.species}
+    </p>
+    {
+      config.frontmatter.isMissing ? (
+        <h1 class="font-bold text-2xl bg-warning text-warning-content rounded text-center w-64 p-2">
+          🚨 Desaparecido 🚨
+          <br />
+          <p class="text-base font-normal">Entrar em contato imediatamente</p>
+        </h1>
+      ) : (
+        ""
+      )
+    }
+  </div>
+  <ul
+    class="card bg-base-200 w-96 shadow-xl flex flex-col justify-center p-4 gap-2"
+  >
+    <li>⚪ Sexo: <strong>{config.frontmatter.gender}</strong></li>
+    <li>🎨 Cor/Raça: <strong>{config.frontmatter.color}</strong></li>
+    <li>📆 Idade: <strong>{config.frontmatter.age}</strong></li>
+    <li>📍 Localização: <strong>{config.frontmatter.location}</strong></li>
+  </ul>
+  <div class="flex flex-col items-center justify-center gap-2">
+    <p class="font-bold text-2xl">Contato:</p>
+    <div class="flex items-center justify-between gap-2">
+      <a href={`mailto:${config.frontmatter.email}`} class="btn btn-primary"
+        ><Icon name="mail" width="24" height="24" />E-mail</a
+      >
+      <a
+        href={`https://api.whatsapp.com/send?phone=55${config.frontmatter.phone}&text=Ol%C3%A1!%20Encontrei%20o%20${config.frontmatter.name}.`}
+        target="_blank"
+        class="btn btn-primary"
+        ><Icon name="phone" width="24" height="24" />Whatsapp</a
+      >
+    </div>
+  </div>
+  <section>
+    <p class="text-xs opacity-70 mt-6">
+      Made by
+      <a href="https://github.com/luizfverissimo" class="link">LF Verissimo</a>
+    </p>
+  </section>
+</main>
