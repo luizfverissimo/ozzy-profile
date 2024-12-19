@@ -9,4 +9,5 @@ location: 'Londrina/PR'
 email: 'luizfverissimo@gmail.com'
 phone: '43999211926'
 isMissing: false
+theme: 'halloween'
 ---
